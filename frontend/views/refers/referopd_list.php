@@ -8,7 +8,7 @@ $this->title ="RFOPD-LIST";
 echo GridView::widget([
         'dataProvider' => $dataProvider,
         'panel' => [
-            'before'=>'<b style="color:blue ">รายงานRefersส่งต่อแยกตามแผนกบริการ(OPD-IPD)</b>(<b style="color: red">REFER-IPD</b>)',
+            'before'=>'<b style="color:blue ">รายงานRefersส่งต่อแยกตามแผนกบริการ(OPD-ER)</b>(<b style="color: red">REFER-IPD</b>)',
             'after'=>'<b style="color:red">ประมวลผล </b>'.date('Y-m-d H:i:s')
             ]]
         )

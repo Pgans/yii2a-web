@@ -37,7 +37,7 @@ MaterialAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-     //$report_mnu_itms8[] = ['label' => 'ประวัติบริการ', 'url' => ['ehr']];
+     $report_mnu_itms8[] = ['label' => 'ประวัติบริการ', 'url' => ['ehr/index']];
     $report_mnu_itms7[] = ['label' => 'ยืมเวชระเบียน', 'url' => ['opdcard/permits']];
 
     $report_mnu_itms6[] = ['label' => 'รายงานจำนวนอุปกรณ์คอมพิวเตอร์', 'url' => ['computer/devicenew']];
@@ -68,11 +68,9 @@ MaterialAsset::register($this);
     $report_mnu_itms5[] = ['label' => 'รายงานผู้ป่วยเสียชีวิตในโรงพยาบาลทั้งหมด(แฟ้มDeaths)', 'url' => ['deaths/death_all']];
     $report_mnu_itms5[] = ['label' => 'รายงานผู้ป่วยเสียชีวิตยังไม่จำหน่าย(43แฟ้ม (Discharge=9)', 'url' => ['deaths/persondisc']];
    
-    $report_mnu_itms2[] = ['label' => 'รายงานผู้ป่วยส่งต่อแยกตามแผนกบริการ(OPD-IPD)', 'url' => ['refers/referopd']];
-    $report_mnu_itms2[] = ['label' => 'รายงานผู้ป่วยส่งต่อโรงพยาบาลนอกจังหวัด', 'url' => ['refers/referout_nok']];
-    $report_mnu_itms2[] = ['label' => 'รายงานผู้ป่วยส่งต่อโรงพยาบาลสูงกว่า', 'url' => ['refers/referout_tall']];
-    $report_mnu_itms2[] = ['label' => 'รายงานผู้ป่วยในโรงพยาบาลที่มีการส่งต่อทั้งหมด(All)', 'url' => ['refers/referout_all']];
-    $report_mnu_itms2[] = ['label' => 'รายงานผู้ป่วยในโรงพยาบาลที่มีการส่งต่อทั้งหมด(ทุกDx)', 'url' => ['refers/referout_diag']];
+    $report_mnu_itms2[] = ['label' => 'รายงานRefersส่งต่อแยกตามแผนกบริการ(OPD)', 'url' => ['refers/referopd']];
+    $report_mnu_itms2[] = ['label' => 'รายงานRefersส่งต่อแยกตามแผนกบริการ(IPD)', 'url' => ['refers/referipd']];
+    $report_mnu_itms2[] = ['label' => 'รายงานผู้มารับบริการในโรงพยาบาลที่มีการส่งต่อ(Refers)', 'url' => ['refers/referout_all']];
     $report_mnu_itms2[] = ['label' => 'รายงานรับRefer', 'url' => ['refers/referin']];
     $report_mnu_itms1[] = ['label' => '43แฟ้ม(Hospital)', 'url' => ['hosp43/index']];
     $report_mnu_itms1[] = ['label' => '43แฟ้ม(Pcu)', 'url' => ['pcu43/index']];
@@ -89,21 +87,21 @@ MaterialAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
              
               ['label' => 'mBase',
-           'items' => $report_mnu_itms
-              ],
-              ['label' => '43F',
+          'items' => $report_mnu_itms
+            ],
+              ['label' => '43แฟ้ม',
            'items' => $report_mnu_itms1
-              ],
-              ['label' => 'Report',
-           'items' => $report_mnu_itms5
               ],
               ['label' => 'Refers',
            'items' => $report_mnu_itms2
               ],
-              ['label' => 'Service',
+              ['label' => 'รายงาน',
+           'items' => $report_mnu_itms5
+              ],
+              ['label' => 'ทะเบียนคอม',
            'items' => $report_mnu_itms6
               ],
-              ['label' => 'MRS',
+              ['label' => 'เวชระเบียน',
            'items' => $report_mnu_itms7
               ],
         //       ['label' => 'การบริการ',
@@ -116,7 +114,9 @@ MaterialAsset::register($this);
         #$menuItems[] = ['label' => 'Devices', 'url' => ['/computer/index']];
     } else {
         $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->person->firstname . ')',
+           // 'label' => 'Logout (' . Yii::$app->user->identity->person->firstname . ')',
+               'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];

@@ -78,8 +78,7 @@ class SiteController extends Controller
         $connection = Yii::$app->db2;
         $datao = $connection->createCommand('
             SELECT a.fiscal , COUNT(a.visit_id) AS acvisits, COUNT(DISTINCT a.HN ) AS achuman
-            FROM mb_accidents_fiscal a 
-            GROUP BY fiscal
+            FROM mb_accidents_fiscal a
             ')->queryAll();
 
             $acdataProvider = new ArrayDataProvider([
@@ -88,7 +87,7 @@ class SiteController extends Controller
                 'attributes'=>['fiscal','acivisits','achuman']
             ],
         ]);
-        //เตรียมข้อมูลAccidentส่งให้กราฟ
+        //เตรียมข้อมูลส่งให้กราฟ
         for($i=0;$i<sizeof($datao);$i++){
             $acfiscal[] = $datao[$i]['fiscal'];        
             $acvisits[] =intval($datao[$i]['acvisits']);
@@ -237,7 +236,7 @@ class SiteController extends Controller
                 'attributes'=>['fiscal','cidbaby']
             ],
         ]);
-        //เตรียมข้อมูลคลอดส่งให้กราฟ
+        //เตรียมข้อมูลคอมพิวเตอร์ส่งให้กราฟ
         for ($i = 0; $i < sizeof($databa); $i++) {
             $babyfiscal[] = $databa[$i]['fiscal'];
             $cidbaby[] = (int) $databa[$i]['cidbaby'];

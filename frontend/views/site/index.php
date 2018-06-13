@@ -598,7 +598,7 @@ $this->title = 'M30hospital(045489064)';
                                         'colors' => ['#CC99FF', '#C0C0C0', '#B9D300', '#FFFF99', '#99CC00', '#FF9900', '#33CCCC', '#FF99CC', '#808000', '#FF0000', '#FFCC00', '#993366', '#000080'],
                                         'title' => ['text' => 'ปีงบประมาณ'],
                                         'xAxis' => [
-                                            'categories' => $acfiscal
+                                            'categories' => $fiscal
                                         ],
                                         'series' => [
                                             ['type' => 'column',
@@ -617,8 +617,9 @@ $this->title = 'M30hospital(045489064)';
                                 ?>
                             </div>
 
+
                             <div>
-                                 <?php
+                                <?php
                                 //use yii\grid\GridView;
 
                                 echo GridView::widget([
@@ -632,26 +633,9 @@ $this->title = 'M30hospital(045489064)';
                                     'pjaxSettings' => [
                                         'neverTimeout' => true,
                                     ],
-                                    'columns' => [
-                                        ['class' => 'yii\grid\SerialColumn'],
-                                        [
-                                            'label' => 'ปีงบประมาณ',
-                                            'attribute' => 'fiscal'
-                                        ],
-                                        [
-                                            'label' => 'จำนวนที่ครั้ง',
-                                            'attribute' => 'acvisits',
-                                            'format' => ['decimal', 0]
-                                        ],
-                                        [
-                                            'label' => 'จำนวนที่คน',
-                                            'attribute' => 'achuman',
-                                            'format' => ['decimal', 0]
-                                        ],
-                                    ],
+                                    
                                 ]);
                                 ?>
-                               
                             </div>
                         </div>
                     </div>
